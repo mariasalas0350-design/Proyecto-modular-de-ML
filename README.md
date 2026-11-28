@@ -102,15 +102,51 @@ https://raw.githubusercontent.com/IvTole/Intro_IA_ML_CUGDL/refs/heads/main/data/
 
 ## 5. Comandos para ejecutar el proyecto
 
-(pendiente: Satiago)
+Con las dependencias instaladas y desde la raíz del repositorio:
+
+```bash
+python train.py
+```
+
+El script carga `datos/housing.csv`, elimina los nulos, separa X / y, divide los datos en entrenamiento (60%), validación (20%) y prueba (20%) y crea las variables nuevas. Después compara los tres modelos en validación, elige el de menor MAE de validación y lo evalúa una sola vez en prueba. Imprime la tabla de comparación, el modelo elegido y su MAE y RMSE en prueba.
 
 ## 6. Modelos utilizados, resultados e interpretación
 
-(pendiente: Santiago)
+### Modelos
+
+| Modelo | Configuración |
+|---|---|
+| Regresión lineal | Valores por defecto |
+| Árbol de decisión | `max_depth=6`, `random_state=42` |
+| Bosque aleatorio | `n_estimators=100`, `random_state=42` |
+
+Se incluye además una referencia (`DummyRegressor` con la mediana de entrenamiento) para saber si los modelos aportan algo. Cada modelo va dentro de un `Pipeline` junto con el preprocesador, que se ajusta solo con entrenamiento. Todos usan la misma partición y la misma semilla. Las métricas son MAE y RMSE, en dólares.
+
+### Resultados en validación
+
+| Modelo | MAE entrenamiento | MAE validación | RMSE validación |
+|---|---|---|---|
+| Regresión lineal | [ ] | [ ] | [ ] |
+| Árbol de decisión | [ ] | [ ] | [ ] |
+| Bosque aleatorio | [ ] | [ ] | [ ] |
+| Referencia (mediana) | [ ] | [ ] | [ ] |
+
+Modelo elegido (menor MAE de validación): **[ ]**
+
+Resultado en prueba (una sola evaluación): MAE = [ ], RMSE = [ ]
+
+### Interpretación
+
+[2 o 3 frases: qué modelo ganó y por cuánto superó a la referencia; si el MAE de entrenamiento es mucho menor que el de validación (señal de sobreajuste); si el resultado en prueba se parece al de validación; y por qué el RMSE sale mayor que el MAE.]
+
 
 ## 7. Limitaciones y problemas conocidos
 
-(pendiente: Santiago)
+- La comparación usa una sola partición; los resultados podrían cambiar con otra semilla o con validación cruzada.
+- No se ajustaron hiperparámetros: se usaron los valores fijos del enunciado.
+- Solo se usaron MAE y RMSE; no se analizan los errores por zona ni por rango de precio.
+- Cada fila es una zona censal, así que las predicciones no representan el precio de una casa individual.
+- [Añade cualquier problema que encuentres al ejecutar.]
 
 ## 8. Tabla de contribuciones
 
